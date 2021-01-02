@@ -19,7 +19,7 @@ Dungeon Battle is an RPG Battle Game. The user gets to enter their name, select 
 
 This is a web-based game. a modern web browser that supports HTML5 and CSS is required.
 
-Use Cases:
+User Stories:
 
 As a User, I should be able to enter a Combatant Name
 
