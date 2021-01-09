@@ -10,24 +10,32 @@ function Player (classType, health, mana, strength, agility, speed) {
 }
 let PlayerMoves = {
     calcAttack: function(){
-        //Who attacks first?
-        let getPlayerSpeed = player.speed;
-        let getEnemySpeed = enemy.speed;
+        //local variables for attack function
+        getPlayerSpeed = player.speed;
+        getEnemySpeed  = enemy.speed;
+        
+
+        //player attacks enemy
         playerAttack = function () {
             let calcBaseDmg;
-            if (player.mana) {
+            if (player.mana > 0) {
                 calcBaseDmg = player.strength * player.mana / 1000;
+                console.log(`player mana value: ${calcBaseDmg}`)
             } else {
                 calcBaseDmg = player.strength * player.agility / 1000;
+                console.log(`player mana value: ${calcBaseDmg}`)
             }
+            //damage Offset is sort of a basic attempt to calculate critical damage. Diablo 3 formula for DPS is Base Damage * Damage Offset (Crit) plus some other feature calcs i need to create
             let damageOffset = Math.floor(Math.random() * Math.floor(10));
+            //damage = base damage plus random damage offset between 0 and 9
             let calcOutputDmg = calcBaseDmg + damageOffset;
             //Number of hits per turn
-            let numberOfHits = Math.floor(Math.random() * Math.floor((player.agility /10)/2)) + 1;
+            let numberOfHits = Math.floor(Math.random() * Math.floor(player.agility /10) /2) + 1;
             let attackValues = [calcOutputDmg,numberOfHits];
             return attackValues;
         },
-    
+        
+        //enemy attacks player
         enemyAttack = function () {
             let calcBaseDmg;
             if (enemy.mana) {
@@ -35,23 +43,26 @@ let PlayerMoves = {
             } else {
                 calcBaseDmg = enemy.strength * enemy.agility / 1000;
             }
+            //damage Offset is sort of a basic attempt to calculate defense/deflect on the target
             let damageOffset = Math.floor(Math.random() * Math.floor(10));
+            //damage = base damage plus random damage offset between 0 and 9
             let calcOutputDmg = calcBaseDmg + damageOffset;
             //Number of hits per turn
-            let numberOfHits = Math.floor(Math.random() * Math.floor((enemy.agility /10)/2)) + 1;
+            let numberOfHits = Math.floor(Math.random() * Math.floor(player.agility /10) /2) + 1;
             let attackValues = [calcOutputDmg,numberOfHits];
             return attackValues;
         },
-    
+
         getPlayerHealth = document.querySelector(".player-health")
         getEnemyHealth = document.querySelector(".enemy-health")
+        
     
         //initiate attack!
         if (getPlayerSpeed >= getEnemySpeed){
             let playerAttackValues = playerAttack();
             let totalDamage = playerAttackValues[0] * playerAttackValues[1];
             enemy.health = enemy.health -totalDamage;
-            alert(`You hit for ${playerAttackValues[0]} damage, ${playerAttackValues[1]} times`)
+            alert(`You hit ${playerAttackValues[1]} times for ${playerAttackValues[0]} damage`)
             if (enemy.health <= 0) {
                 alert ("You win! Refresh browser to play again")
                 getPlayerHealth.innerHTML = `Health: ${player.health}`;
@@ -62,7 +73,7 @@ let PlayerMoves = {
                 let enemyAttackValues = enemyAttack();
                 let totalDamage = enemyAttackValues[0] * enemyAttackValues[1];
             enemy.health = player.health - totalDamage;
-            alert(`You hit for ${enemyAttackValues[0]} damage, ${enemyAttackValues[1]} times`)
+            alert(`You hit ${enemyAttackValues[1]} times for ${enemyAttackValues[0]} damage`)
             if (player.health <= 0) {
                 alert ("You LOSE!!! Refresh Browser to Play again")
                 getPlayerHealth.innerHTML = 'Health: 0';
@@ -75,7 +86,7 @@ let PlayerMoves = {
             let enemyAttackValues = enemyAttack();
             let totalDamage = enemyAttackValues[0] * enemyAttackValues[1];
             player.health = player.health - totalDamage;
-            alert(`Enemy hit for ${enemyAttackValues[0]} damage, ${enemyAttackValues[1]} times`)
+            alert(`Enemy hit ${enemyAttackValues[1]} times for ${enemyAttackValues[0]} damage`)
             if (player.health <= 0) {
                 alert ("You LOSE! Refresh browser to play again")
                 getEnemyHealth.innerHTML = `Health: ${enemy.health}`;
@@ -86,7 +97,7 @@ let PlayerMoves = {
                 let playerAttackValues = playerAttack();
                 let totalDamage = playerAttackValues[0] * playerAttackValues[1];
             player.health = player.health - totalDamage;
-            alert(`You hit for ${playerAttackValues[0]} damage, ${playerAttackValues[1]} times`)
+            alert(`You hit ${playerAttackValues[1]} times for ${playerAttackValues[0]} damage`)
             if (enemy.health <= 0) {
                 alert ("You WIN!!! Refresh Browser to Play again")
                 getEnemyHealth.innerHTML = 'Health: 0';

@@ -7,13 +7,13 @@ let GameManager = {
      resetPlayer: function(classType){
         switch (classType){
             case "Crusader":
-                player = new Player(classType, 200, 0, 200, 100, 50);
+                player = new Player(classType, 200, 0, 200, 80, 50);
                 break;
             case "Mage":
-                player = new Player(classType, 100, 50, 80, 110, 75);
+                player = new Player(classType, 100, 50, 80, 10, 75);
                 break;
             case "Witchdoctor":
-                player = new Player(classType, 120, 25, 100, 120, 100);
+                player = new Player(classType, 120, 25, 100, 90, 60);
                 break;    
         }
             //variable to select the interface class
@@ -42,10 +42,10 @@ let GameManager = {
         let getEnemy = document.querySelector(".enemy");
 
         //declare the enemy types 
-        const enemy00 = new Enemy("Goblin",100,0,50,100,100);
-        const enemy01 = new Enemy("Fallen",150,0,75,75,75);
+        const enemy00 = new Enemy("Goblin",100,0,50,100,45);
+        const enemy01 = new Enemy("Fallen",150,0,75,75,60);
         const enemy02 = new Enemy("Boggit",200,0,200,50,50);
-        const enemy03 = new Enemy("Wraith",125,25,100,25,25);
+        const enemy03 = new Enemy("Wraith",125,25,100,25,35);
 
         //Logic to randomly select an enemy to fight in this dungeon battle
         let randomEnemySelector = Math.floor(Math.random() * 4);

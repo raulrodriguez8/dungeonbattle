@@ -103,7 +103,7 @@ img {
     background-image: url("/img/arena.jpeg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     visibility: hidden;
   }
   
@@ -122,8 +122,8 @@ img {
   }
   
   .enemy img {
-    width: 350px;
-    height: 350px;
+    width: 150px;
+    height: 150px;
   }
   
   .enemy div {
