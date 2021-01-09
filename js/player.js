@@ -62,19 +62,19 @@ let PlayerMoves = {
         //initiate attack calculation
         if (getPlayerSpeed >= getEnemySpeed){
             //if player and enemy have same speed, player attacks first
-            playerAttackValues = playerAttack();
-            totalDamage = playerAttackValues[0] * playerAttackValues[1];
-            enemy.health = enemy.health -totalDamage;
-            alert(`You hit ${playerAttackValues[1]} times for ${playerAttackValues[0]} damage`)
-            if (enemy.health <= 0) {
+            playerAttackValues = playerAttack(); //call playerAttack function
+            totalDamage = playerAttackValues[0] * playerAttackValues[1]; //store variable totalDamage which is array values zero and 1 from playerAttack funciton
+            enemy.health -= totalDamage; //update enemy health to equal current value minus totalDamage calculated in PlayerAttack function
+            alert(`You hit ${playerAttackValues[1]} times for ${playerAttackValues[0]} damage`) //output damage to user
+            if (enemy.health <= 0) { //if enemy health is less or equal to zero, alert the user they won, then update the html values of player health and enemy health to reflect win condition
                 alert ("You win! Refresh browser to play again")
                 getPlayerHealth.innerHTML = `Health: ${player.health}`;
                 getEnemyHealth.innerHTML = 'Health: 0';
-            } else {
+            } else { //otherwise update the enemy's health to its current value in the DOM
                 getEnemyHealth.innerHTML = `Health: ${enemy.health}`;
-                //Enemy attacks
-                let enemyAttackValues = enemyAttack();
-                let totalDamage = enemyAttackValues[0] * enemyAttackValues[1];
+                //NOW THE ENEMY ATTACKS!!!
+                enemyAttackValues = enemyAttack(); //instantiate the enemy's attack on player
+                totalDamage = enemyAttackValues[0] * enemyAttackValues[1]; //damage equals 
             enemy.health = player.health - totalDamage;
             alert(`You hit ${enemyAttackValues[1]} times for ${enemyAttackValues[0]} damage`)
             if (player.health <= 0) {

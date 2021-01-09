@@ -28,9 +28,9 @@ let GameManager = {
         let getAttacks = document.querySelector(".attacks");
         let getArena = document.querySelector(".arena");
         //append instructions to the DOM
-        getHeader.innerHTML = '<p>Find an enemy using the button below!</p>';
+        getHeader.innerHTML = '<p>Find an enemy using the BEGIN BATTLE button below!</p>';
         //build a button to start the battle in the DOM (aka move to set fight function)
-        getAttacks.innerHTML = '<a href="#" class="btn-prefight" onclick="GameManager.setFight()">Begin Battle</a>';
+        getAttacks.innerHTML = '<button class="btn btn-primary" type="button" onclick="GameManager.setFight()">Begin Battle</button>';
         //make the Arena element available in the DOM
         getArena.style.visibility = "visible";
      },
@@ -63,8 +63,8 @@ let GameManager = {
         }
         console.log(enemy);
         //assign html statements for different attacks to the DOM
-        getHeader.innerHTML  = '<p>Task: Choose Your Attack</p>';
-        getAttacks.innerHTML = '<a href="#" class="btn-prefight" onclick="PlayerMoves.calcAttack()">Physical Attack!</a>';
+        getHeader.innerHTML  = '<p>STEP 2: Choose Your Attack</p>';
+        getAttacks.innerHTML = '<button class="btn btn-primary" type="button" onclick="PlayerMoves.calcAttack()">Step 3: Attack!</button>';
         //build the enemy in the DOM starting with the enemy's image, the name of the enemy in a header, and then a status box of the enemy's vitals
         //getEnemy.innerHTML = '<img src="/img/enemy-avatars/' + enemy.classType.toLowerCase() + '.jpeg" alt="' + enemy.classType + '" class="img-avatar"><div><h3>' + enemy.classType + '</h3><p class="enemy-health">Health: ' + enemy.health + '</p><p>Mana: ' + enemy.mana + '</p><p>Strength: ' + enemy.strength + '</p><p>Agility: ' + enemy.agility + '</p><p>Speed: ' + enemy.speed + '</p></div>';
         getEnemy.innerHTML = `<img src="/img/enemyavatars/${enemy.enemyType}.jpeg" alt= ${enemy.enemyType} class="img-avatar"><div><h3>${enemy.enemyType}</h3><p class="enemy-health">Health: ${enemy.health}</p><p>Mana: ${enemy.mana}</p><p>Strength: ${enemy.strength}</p><p>Agility: ${enemy.agility}</p><p>Speed: ${enemy.speed}</p></div>`;
