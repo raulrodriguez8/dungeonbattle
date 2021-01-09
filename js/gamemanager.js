@@ -35,17 +35,17 @@ let GameManager = {
         getArena.style.visibility = "visible";
      },
 
-     setFight: function() {
+     setFight: function(classType) {
         //grab the elements for Enemy to manipulate the DOM
         let getHeader = document.querySelector(".header");
         let getAttacks = document.querySelector(".attacks");
         let getEnemy = document.querySelector(".enemy");
 
         //declare the enemy types 
-        const enemy00 = new Enemy("Goblin", 100,0,50,100,100);
-        const enemy01 = new Enemy("Fallen", 150,0,75,75,75);
-        const enemy02 = new Enemy("Boggit",200,0,200,50,50);
-        const enemy03 = new Enemy("Wraith",125,25,100,25,25);
+        const enemy00 = new Enemy("goblin", 100,0,50,100,100);
+        const enemy01 = new Enemy("fallen", 150,0,75,75,75);
+        const enemy02 = new Enemy("boggit",200,0,200,50,50);
+        const enemy03 = new Enemy("wraith",125,25,100,25,25);
 
         //Logic to randomly select an enemy to fight in this dungeon battle
         let randomEnemySelector = Math.floor(Math.random() * Math.floor(4));
@@ -65,6 +65,6 @@ let GameManager = {
         getHeader.innerHTML  = '<p>Task: Choose Your Attack</p>';
         getAttacks.innerHTML = '<a href="#" class="btn-prefight" onclick="PlayerMoves.calcAttack()">Physical Attack!</a>';
         //build the enemy in the DOM starting with the enemy's image, the name of the enemy in a header, and then a status box of the enemy's vitals
-        getEnemy.innerHTML = `<img src="img/enemy-avatars/${enemy.classType.toLowerCase()}.jpeg" alt= ${enemy.classType} class="img-avatar"><div><h3>${enemy.classType}</h3><p class="enemy-health">Health: ${enemy.health}</p><p>Mana: ${enemy.mana}</p><p>Strength: ${enemy.strength}</p><p>Agility: ${enemy.agility}</p><p>Speed: ${enemy.speed}</p></div>`;
+        getEnemy.innerHTML = `<img src="img/enemy-avatars/${enemy.enemyType}.jpeg" alt= ${enemy.enemyType} class="img-avatar"><div><h3>${enemy.enemyType}</h3><p class="enemy-health">Health: ${enemy.health}</p><p>Mana: ${enemy.mana}</p><p>Strength: ${enemy.strength}</p><p>Agility: ${enemy.agility}</p><p>Speed: ${enemy.speed}</p></div>`;
     }
     } 
