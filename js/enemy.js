@@ -1,12 +1,10 @@
 let enemy; //global scope variable to identify the enemy AI
-class Enemy {
-    constructor(enemyType, health, mana, strength, agility, speed) {
+function Enemy (classType, health, mana, strength, agility, speed) {
 
-        this.enemyType = enemyType;
+        this.classType = classType;
         this.health = health;
         this.mana = mana;
         this.strength = strength;
         this.agility = agility;
         this.speed = speed;
     }
-}

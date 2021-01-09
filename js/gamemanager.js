@@ -19,7 +19,7 @@ let GameManager = {
             //variable to select the interface class
             let getInterface = document.querySelector(".interface");
             //set the HTML of the interface equal to the Player's character image/title/stats to start loading the game
-            getInterface.innerHTML = `<img src="img/${classType.toLowerCase()}.jpeg" class="img-avatar"><div><h3>${classType}</h3><p>Health: ${player.health}</p><p>Mana: ${player.mana}</p><p>Strength: ${player.strength}</p><p>Agility: ${player.agility}</p><p>Speed: ${player.speed}</p></div>`;
+            getInterface.innerHTML = `<img src="img/${classType.toLowerCase()}.jpeg" class="img-avatar"><div><h3>${classType}</h3><p class="player-health">Health: ${player.health}</p><p>Mana: ${player.mana}</p><p>Strength: ${player.strength}</p><p>Agility: ${player.agility}</p><p>Speed: ${player.speed}</p></div>`;
 
      },
 
@@ -48,7 +48,7 @@ let GameManager = {
         const enemy03 = new Enemy("wraith",125,25,100,25,25);
 
         //Logic to randomly select an enemy to fight in this dungeon battle
-        let randomEnemySelector = Math.floor(Math.random() * Math.floor(4));
+        let randomEnemySelector = Math.floor(Math.random() * Math.floor(2));
         console.log(randomEnemySelector);//remove later
 
         switch(randomEnemySelector) {
@@ -56,15 +56,17 @@ let GameManager = {
             break;
             case "1": enemy = enemy01;
             break;
-            case "2": enemy = enemy02;
-            break;
-            case "3": enemy = enemy03;
-            break;
+            // case "2": enemy = enemy02;
+            // break;
+            // case "3": enemy = enemy03;
+            // break;
         }
+        console.log(enemy);
         //assign html statements for different attacks to the DOM
         getHeader.innerHTML  = '<p>Task: Choose Your Attack</p>';
         getAttacks.innerHTML = '<a href="#" class="btn-prefight" onclick="PlayerMoves.calcAttack()">Physical Attack!</a>';
         //build the enemy in the DOM starting with the enemy's image, the name of the enemy in a header, and then a status box of the enemy's vitals
-        getEnemy.innerHTML = `<img src="img/enemy-avatars/${enemy.enemyType}.jpeg" alt= ${enemy.enemyType} class="img-avatar"><div><h3>${enemy.enemyType}</h3><p class="enemy-health">Health: ${enemy.health}</p><p>Mana: ${enemy.mana}</p><p>Strength: ${enemy.strength}</p><p>Agility: ${enemy.agility}</p><p>Speed: ${enemy.speed}</p></div>`;
+        getEnemy.innerHTML = '<img src="./img/enemy-avatars/' + enemy.classType.toLowerCase() + '.jpeg" alt="' + enemy.classType + '" class="img-avatar"><div><h3>' + enemy.classType + '</h3><p class="enemy-health">Health: ' + enemy.health + '</p><p>Mana: ' + enemy.mana + '</p><p>Strength: ' + enemy.strength + '</p><p>Agility: ' + enemy.agility + '</p><p>Speed: ' + enemy.speed + '</p></div>';
+        //getEnemy.innerHTML = `<img src="img/enemy-avatars/${enemy.enemyType}.jpeg" alt= ${enemy.enemyType} class="img-avatar"><div><h3>${enemy.enemyType}</h3><p class="enemy-health">Health: ${enemy.health}</p><p>Mana: ${enemy.mana}</p><p>Strength: ${enemy.strength}</p><p>Agility: ${enemy.agility}</p><p>Speed: ${enemy.speed}</p></div>`;
     }
     } 
