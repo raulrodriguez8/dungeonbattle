@@ -29,8 +29,10 @@ let PlayerMoves = {
             let damageOffset = Math.floor(Math.random() * Math.floor(10));
             //damage = base damage plus random damage offset between 0 and 9
             let calcOutputDmg = calcBaseDmg + damageOffset;
+            console.log(`damage: ${calcOutputDmg}`)
             //Number of hits per turn
-            let numberOfHits = Math.floor(Math.random() * Math.floor(player.agility /10) /2) + 1;
+            let numberOfHits = Math.floor(Math.random() * Math.floor(player.agility / 10) / 2) + 1;
+            console.log(`no. hits: ${numberOfHits}`)
             let attackValues = [calcOutputDmg,numberOfHits];
             return attackValues;
         },
@@ -57,10 +59,11 @@ let PlayerMoves = {
         getEnemyHealth = document.querySelector(".enemy-health")
         
     
-        //initiate attack!
+        //initiate attack calculation
         if (getPlayerSpeed >= getEnemySpeed){
-            let playerAttackValues = playerAttack();
-            let totalDamage = playerAttackValues[0] * playerAttackValues[1];
+            //if player and enemy have same speed, player attacks first
+            playerAttackValues = playerAttack();
+            totalDamage = playerAttackValues[0] * playerAttackValues[1];
             enemy.health = enemy.health -totalDamage;
             alert(`You hit ${playerAttackValues[1]} times for ${playerAttackValues[0]} damage`)
             if (enemy.health <= 0) {
