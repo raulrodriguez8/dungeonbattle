@@ -35,15 +35,15 @@ let GameManager = {
         getArena.style.visibility = "visible";
      },
 
-     setFight: function(classType) {
+     setFight: function() {
         //grab the elements for Enemy to manipulate the DOM
         let getHeader = document.querySelector(".header");
         let getAttacks = document.querySelector(".attacks");
         let getEnemy = document.querySelector(".enemy");
 
         //declare the enemy types 
-        const enemy00 = new Enemy("goblin", 100,0,50,100,100);
-        const enemy01 = new Enemy("fallen", 150,0,75,75,75);
+        const enemy00 = new Enemy("goblin",100,0,50,100,100);
+        const enemy01 = new Enemy("fallen",150,0,75,75,75);
         const enemy02 = new Enemy("boggit",200,0,200,50,50);
         const enemy03 = new Enemy("wraith",125,25,100,25,25);
 
