@@ -1,8 +1,8 @@
 let enemy; //global scope variable to identify the enemy AI
 class Enemy {
-    constructor(classType, health, mana, strength, agility, speed) {
+    constructor(enemyType, health, mana, strength, agility, speed) {
 
-        this.classType = classType;
+        this.enemyType = enemyType;
         this.health = health;
         this.mana = mana;
         this.strength = strength;
