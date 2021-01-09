@@ -14,6 +14,7 @@ Dungeon Battle is an RPG Battle Game. The user gets to select from one of THREE 
 
 -Javascript
 
+-Bootstrap
 
 This is a web-based game. a modern web browser that supports HTML5 and CSS is required.
 
