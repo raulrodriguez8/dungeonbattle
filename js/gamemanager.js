@@ -27,8 +27,11 @@ let GameManager = {
         let getHeader = document.querySelector(".header");
         let getAttacks = document.querySelector(".attacks");
         let getArena = document.querySelector(".arena");
+        //append instructions to the DOM
         getHeader.innerHTML = '<p>Find an enemy using the button below!</p>';
+        //build a button to start the battle in the DOM
         getAttacks.innerHTML = '<a href="#" class="btn-prefight" onclick="GameManager.setFight()">Begin Battle</a>';
+        //make the Arena element available in the DOM
         getArena.style.visibility = "visible";
      },
 
