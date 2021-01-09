@@ -27,8 +27,8 @@ let GameManager = {
         let getHeader = document.querySelector(".header");
         let getAttacks = document.querySelector(".attacks");
         let getArena = document.querySelector(".arena");
-        getHeader.innerHTML = '<p>Task: Find an enemy!</p>';
-        getAttacks.innerHTML = '<a href="#" class="btn-prefight" onclick="GameManager.setFight()">Search for monster!</a>';
+        getHeader.innerHTML = '<p>Find an enemy using the button below!</p>';
+        getAttacks.innerHTML = '<a href="#" class="btn-prefight" onclick="GameManager.setFight()">Begin Battle</a>';
         getArena.style.visibility = "visible";
      },
 
