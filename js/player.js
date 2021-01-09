@@ -76,7 +76,7 @@ let PlayerMoves = {
                 enemyAttackValues = enemyAttack(); //instantiate the enemy's attack on player
                 totalDamage = enemyAttackValues[0] * enemyAttackValues[1]; //damage equals 
             player.health = player.health - totalDamage;
-            alert(`You hit ${enemyAttackValues[1]} times for ${enemyAttackValues[0]} damage`)
+            alert(`Enemy hit you ${enemyAttackValues[1]} times for ${enemyAttackValues[0]} damage`)
             if (player.health <= 0) {
                 alert ("You LOSE!!! Refresh Browser to Play again")
                 getPlayerHealth.innerHTML = 'Health: 0'; //set play
